@@ -1,38 +1,368 @@
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 100px;
+    border-bottom: 1px solid #666666;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+    height: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.rightHeader {
+    font-size: 2em;
+    color: #666666;
 }
 
-.App-link {
-  color: #61dafb;
+.link {
+    font-weight: bolder;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.challenge {
+    font-weight: 500;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 500px;
+
+}
+
+.contentSubmitLink {
+    display: flex;
+    align-items: center;
+    background-color: #d8d8d8;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.borderLine {
+    border-bottom: 1px solid #666666;
+}
+
+.rectangleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    background-color: #CCCCCC;
+    font-size: 3em;
+    font-weight: bold;
+    border: 2px solid #AAAAAA;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.rectangleBtn:hover {
+    background-color: #AAAAAA;
+    transition: 0.3s ease-in-out;
+
+}
+
+.contentSubmitLinkLabel {
+    text-align: center;
+    font-size: 2em;
+    padding: 1em
+}
+
+.sorting {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    width: 500px;
+    height: auto;
+    word-wrap: normal;
+    border: 1px solid #d8d8d8;
+    margin: 10px 0px;
+    box-shadow: 0 0 3px 1px #d8d8d8;
+}
+
+.listItem:hover {
+    display: flex;
+    flex-direction: row;
+    transition: 0.3s ease-in-out;
+    background-color: #d8d8d8;
+}
+
+.rectangleVote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    background-color: #CCCCCC;
+    border: 2px solid #AAAAAA;
+    transition: .3s ease-in-out;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.rectangleVote div {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.rectangleVote span {
+    font-weight: lighter;
+    font-size: 1em;
+}
+
+.listContent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.listTitle {
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.listUrl {
+    font-weight: lighter;
+    text-align: left;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:320px
+}
+
+.listUrl:hover {
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-decoration: underline;
+}
+
+.listVote {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.toastMessage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.upVote, .downVote {
+    padding: 5px;
+}
+
+.upVote:hover, .downVote:hover {
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #b8b8b8;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.toastMessage {
+    top: 100px;
+    min-width: 200px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgreen;
+    border-radius: 5px;
+    border: 1px solid green;
+    color: green;
+    box-shadow: 0px 5px 15px gray;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1em;
+    animation-name: toastClose;
+    animation-duration: 2s;
+    position: fixed;
+    z-index: 1;
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 100px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeout {
+    from {
+        top: 100px;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+
+
+}
+
+.modalContainer {
+    width: 35%;
+    height: 25%;
+    background-color: #d8d8d8;
+    border: 1px solid #666666;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #666666;
+}
+
+.modalCloseBtn {
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    color: #d8d8d8;
+}
+
+.modalCloseBtn:hover {
+    color: red;
+    transition: 0.3s ease-in-out;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modalBtns {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: auto;
+    margin-bottom: 15px
+}
+
+.modalBtns div {
+    background-color: black;
+    font-size: 1em;
+    border-radius: 50px;
+    width: 150px;
+    padding: 5px;
+    color: white;
+}
+
+.modalBtns div:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+    font-size: 1em;
+    border-radius: 50px;
+    width: 150px;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.modalContent {
+    margin-top: 15px;
+}
+
+.addNewLink{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    border: 1px solid #d8d8d8;
+    margin: 10px 0px;
+    box-shadow: 0 0 3px 1px #d8d8d8;
+    padding: 15px;
+
+}
+.addNewLinkTitle{
+    font-weight: bold;
+}
+.addNewLinkReturn{
+}
+.addNewLinkReturn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.inputs label{
+    padding-right:10px ;
+}
+.delete:hover{
+    background-color: darkred;
+    opacity:1
+}
+.delete{
+    opacity: 0;
+    position: relative;
+    top: -20px;
+    right: -375px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 25;
+}
+.listItem:hover .delete{
+    opacity: 1!important;
+    transition: 0.3s ease-in-out;
+}
+.pagination div {
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+
+
