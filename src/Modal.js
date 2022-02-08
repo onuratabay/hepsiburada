@@ -1,9 +1,9 @@
 import './App.css';
 
 function Modal(props) {
-function closeModal() {
-    props.setModalData({status:'close',data:{}});
-};
+    function closeModal() {
+        props.setModalData({status: 'close', data: {}});
+    };
 
     function deleteListItem() {
         const filteredList = props.listItems.filter(function (item) {
@@ -28,7 +28,7 @@ function closeModal() {
                 </div>
                 <div className="modalBtns">
                     <div className="modalOkBtn" onClick={deleteListItem}>OK</div>
-                    <div className="modalCancelBtn" onClick={closeModal} >CANCEL</div>
+                    <div className="modalCancelBtn" onClick={closeModal}>CANCEL</div>
                 </div>
 
             </div>

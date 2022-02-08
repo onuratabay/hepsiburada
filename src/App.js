@@ -1,9 +1,8 @@
 import './App.css';
 import Header from "./Header";
 import Content from "./Content";
-import Toast from "./Toast";
 
-function App(props) {
+function App() {
 
     return (
         <div className="App">

@@ -5,7 +5,6 @@ import Toast from "./Toast";
 import Pagination from "./Pagination";
 
 function Content(props) {
-    const [voteCount, setVoteCount] = useState(0);
     const [goPage, setGoPage] = useState('mainPage');
     const [modalData, setModalData] = useState({status: 'close', item: {}});
     const [toastData, setToastData] = useState({status: 'close', item: {}});
@@ -49,6 +48,14 @@ function Content(props) {
         }));
     }
 
+    function handleChange(e) {
+        if (e.target.value === 'ASC') {
+            sortAsc();
+        } else if (e.target.value === 'DESC') {
+            sortDesc();
+        }
+    }
+
     function openModal(item) {
         setModalData({status: 'open', item: item});
     };
@@ -56,7 +63,7 @@ function Content(props) {
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = listItems.slice(indexOfFirstPost, indexOfLastPost);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    console.log(currentPosts,'onur');
+    console.log(currentPosts, 'onur');
 
     return (
         <div className="content">
@@ -75,12 +82,10 @@ function Content(props) {
                 <div className="borderLine"></div>
                 <div className="mainContent">
                     <div className="sorting">
-                        <select name="order" placeholder="Order By">
-                            <option value="ASC" onChange={sortAsc}>Most Voted (Z > A)</option>
-                            <option value="DSC" onChange={sortDesc}>Less Voted (A > Z)</option>
+                        <select name="order" placeholder="Order By" onChange={handleChange}>
+                            <option value="ASC">Most Voted (Z > A)</option>
+                            <option value="DESC">Less Voted (A > Z)</option>
                         </select>
-                        <button onClick={sortAsc}>SORT ASC</button>
-                        <button onClick={sortDesc}>SORT DESC</button>
                     </div>
                     <div className="listing">
                         {currentPosts?.length > 0 && currentPosts.map(function (item, index) {

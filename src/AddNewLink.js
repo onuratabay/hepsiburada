@@ -6,16 +6,16 @@ function AddNewLink(props) {
 
     const [name, setName] = useState(null);
     const [url, setUrl] = useState(null);
-    const [toastData, setToastData] = useState({status:'close',item:{}});
+    const [toastData, setToastData] = useState({status: 'close', item: {}});
 
-function returnToList() {
-    props.setGoPage('mainPage');
-    window.location.reload();
-}
+    function returnToList() {
+        props.setGoPage('mainPage');
+        window.location.reload();
+    }
 
     function openToast(name) {
-    setToastData({status:'open', item:{}})
-}
+        setToastData({status: 'open', item: {}})
+    }
 
     function addLocalstorage(e) {
         const oldValues = [];
